@@ -1,4 +1,5 @@
 import os
+import sys
 import shutil
 from pathlib import Path
 from filetypes import FILETYPES, REVERSED_FILETYPES
@@ -108,6 +109,7 @@ class FileSorter:
 
 
     def print_ftypes_numbers(self):
+        print('\n\n')
         print(f'Current files in {self.path}: {sum(v for v in self.ftypes_number.values())}')
         print('------------------------------')
 
@@ -123,6 +125,10 @@ class FileSorter:
 
 
 if __name__ == '__main__':
-    path = r'E:\Users\Quentin\Downloads'
-    filesorter = FileSorter(path)
-    filesorter.run()
+    try:
+        path = sys.argv[1]
+    except IndexError:
+        print('ERROR: no path specified. Please specify a path (example: py main.py C:\path\\to\\my\\folder).')
+    else:
+        filesorter = FileSorter(path)
+        filesorter.run()
