@@ -11,7 +11,7 @@ class FileSorter:
         self.debug_mode = debug_mode
 
     def gather_filetype(self):
-        self.ftypes_number = {k:0 for k in FILETYPES.keys()}
+        self.ftypes_number = {k:0 for k in FILETYPES}
         self.ftypes_number['others'] = 0
         
         for f in os.listdir(self.path):
@@ -60,11 +60,11 @@ class FileSorter:
                     shutil.move(self.path / f, self.path / "others" / f)
 
     def sort_monotype_folder(self):
-        extension_type = {k:0 for k in FILETYPES.keys()}
+        extension_type = {k:0 for k in FILETYPES}
 
         # For each folder other than the one created
         for f in os.listdir(self.path):
-            if (not os.path.isfile(self.path / f)) and (f not in FILETYPES.keys()):
+            if (not os.path.isfile(self.path / f)) and (f not in FILETYPES):
 
                 # For each file in this folder
                 for file_in_folder in os.listdir(self.path / f):
