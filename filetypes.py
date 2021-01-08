@@ -1,7 +1,7 @@
 FILETYPES = {
     'images': ('jpg', 'gif', 'png', 'bmp', 'tif', 'tiff'),
     'videos': ('flv', 'mp4', '3gp', 'wmv'),
-    'music': ('mp3', 'flac', 'wav'),
+    'music': ('mp3', 'flac', 'wav', 'aif'),
     'ebook': ('epub', 'mobi'),
     'documents': ('pdf', 'txt', 'odt', 'ods', 'docx', 'doc', 'xlsx', 'bib', 'rtf'),
     'executables': ('exe'),
@@ -16,7 +16,7 @@ FILETYPES = {
 REVERSED_FILETYPES = {
     'jpg,gif,png,bmp,tif,tiff': 'images',
     'flv,mp4,3gp,wmv': 'videos',
-    'mp3,flac,wav': 'music',
+    'mp3,flac,wav,aif': 'music',
     'epub,mobi': 'ebook',
     'pdf,txt,odt,ods,docx,doc,xlsx,bib,rtf': 'documents',
     'exe': 'executables',

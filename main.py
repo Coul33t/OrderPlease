@@ -48,7 +48,10 @@ class FileSorter:
                             print(f'Original: {self.path / f}')
                             print(f'Destination: {self.path / v / f}')
                         else:
-                            shutil.move(self.path / f, self.path / v / f)
+                            try:
+                                shutil.move(self.path / f, self.path / v / f)
+                            except PermissionError:
+                                print(f'WARNING: could not move \"{f}\" to {self.path}\\{v}')
 
         # For other file types (everything that's not sorted at this point is of type " other ")
         for f in os.listdir(self.path):
@@ -57,7 +60,10 @@ class FileSorter:
                     print(f'Original: {self.path / f}')
                     print(f'Destination: {self.path / "others" / f}')
                 else:
-                    shutil.move(self.path / f, self.path / "others" / f)
+                    try:
+                        shutil.move(self.path / f, self.path / "others" / f)
+                    except PermissionError:
+                        print(f'WARNING: could not move \"{f}\" to {self.path}\\{v}')
 
     def sort_monotype_folder(self):
         extension_type = {k:0 for k in FILETYPES}
@@ -88,7 +94,6 @@ class FileSorter:
                         non_zero += 1
 
                 if non_zero == 1:
-                    
                     category = ''
                     for k, v in extension_type.items():
                         if v > 0:
